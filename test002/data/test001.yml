@@ -1,0 +1,10 @@
+_
+  featrue: 模块
+  story: 接口
+  title: 用例标题
+  request:
+      metod: 请求方式
+      url: 请求路径
+      heafer: 请求头
+      params/data/json/files: 参数
+  vilidate: 断言

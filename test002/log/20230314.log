@@ -1,0 +1,28 @@
+[2023-03-14 17:48:51,636][read_data.py 43][INFO]: 加載F:\Python工程项目\test002\config\setting.ini文件....
+[2023-03-14 17:48:51,637][result_client.py 52][INFO]: 接口请求地址 ==>> http://139.224.237.164:80/api/user/connect/token
+[2023-03-14 17:48:51,637][result_client.py 53][INFO]: 接口请求方式 ==>> POST
+[2023-03-14 17:48:51,638][result_client.py 55][INFO]: 接口请求头 ==>> {
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Connection": "keep-alive",
+    "Content-Length": "198",
+    "Content-Type": "application/json",
+    "Host": "dev.api.senruisoft.com",
+    "Origin": "http://dev.pad.senruisoft.com",
+    "Referer": "http://dev.pad.senruisoft.com/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
+}
+[2023-03-14 17:48:51,638][result_client.py 57][INFO]: 接口请求 params 参数 ==>> null
+[2023-03-14 17:48:51,638][result_client.py 58][INFO]: 接口请求体 data 参数 ==>> null
+[2023-03-14 17:48:51,638][result_client.py 59][INFO]: 接口请求体 json 参数 ==>> {
+    "client_id": "pcclient",
+    "client_secret": "HdiS&Pc!",
+    "grant_type": "HDIS",
+    "scope": "api1",
+    "username": "admin",
+    "password": "E10ADC3949BA59ABBE56E057F20F883E",
+    "instid": "714DBCB5-9C8F-4048-8AAF-DA7549BBF5C0"
+}
+[2023-03-14 17:48:51,638][result_client.py 60][INFO]: 接口上传附件 files 参数 ==>> None
+[2023-03-14 17:48:51,638][result_client.py 61][INFO]: 接口 cookies 参数 ==>> null
