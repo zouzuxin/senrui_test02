@@ -19,7 +19,7 @@ class User(RestClient):
         # {
         return self.post("/api/user/connect/token", **kwargs)
 
-user01 = User(api_root_url)
+user = User(api_root_url)
 
 if __name__ == '__main__':
     datas = {'client_id': 'pcclient', 'client_secret': 'HdiS&Pc!', 'grant_type': 'HDIS', 'scope': 'api1',
@@ -37,5 +37,5 @@ if __name__ == '__main__':
         "Referer":"http://dev.pad.senruisoft.com/",
         "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
     }
-    res = user01.api_token(json = datas,headers = header)
+    res = user.api_token(json = datas,headers = header)
     print(res.json())
