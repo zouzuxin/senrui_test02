@@ -1,1 +1,11 @@
-
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+Content-Length: '198'
+Content-Type: application/json
+Host: dev.api.senruisoft.com
+Origin: http://dev.pad.senruisoft.com
+Referer: http://dev.pad.senruisoft.com/
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+  Gecko) Chrome/108.0.0.0 Safari/537.36

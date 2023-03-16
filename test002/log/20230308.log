@@ -1,2 +1,0 @@
-[2023-03-08 20:11:54,869][read_data.py 26][INFO]: 加载文件F:\Python工程项目\test002\data\test002.yml文件。。。
-[2023-03-08 20:11:54,870][read_data.py 29][INFO]: 读取数据 ==>> {'init_admin_user': {'username': 'wintest', 'password': '123456'}}

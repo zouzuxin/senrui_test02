@@ -1,0 +1,26 @@
+init_admin_josn:
+   client_id: "pcclient"
+   client_secret: "HdiS&Pc!"
+   grant_type: "HDIS"
+   scope: "api1"
+   username: "admin"
+   password: "E10ADC3949BA59ABBE56E057F20F883E"
+   instid: "714DBCB5-9C8F-4048-8AAF-DA7549BBF5C0"
+#   医生登入
+init_doctor_josn:
+   client_id: "pcclient"
+   client_secret: "HdiS&Pc!"
+   grant_type: "HDIS"
+   scope: "api1"
+   username: "1724"
+   password: "E10ADC3949BA59ABBE56E057F20F883E"
+   instid: "714DBCB5-9C8F-4048-8AAF-DA7549BBF5C0"
+# 护士登入
+init_nurse_josn:
+   client_id: "pcclient"
+   client_secret: "HdiS&Pc!"
+   grant_type: "HDIS"
+   scope: "api1"
+   username: "3232"
+   password: "E10ADC3949BA59ABBE56E057F20F883E"
+   instid: "714DBCB5-9C8F-4048-8AAF-DA7549BBF5C0"
