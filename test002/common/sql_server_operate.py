@@ -2,7 +2,7 @@ import os
 
 import pymssql
 
-from common import logger
+from common.logger import logger
 from common.read_data import data
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
@@ -29,7 +29,7 @@ class SqserverDb():
                 print("数据库链接成功")
             self.cur = self.conn.cursor()
         except Exception as e:
-            print(e)
+            logger.error("sql server链接时发生错误：{}".format(e))
 
 
     def __del__(self):
@@ -39,13 +39,17 @@ class SqserverDb():
             # 关闭数据库链接
             self.conn.close()
         except Exception as e:
-            print(e)
+           logger.error("关闭sql server链接时发生错误：{}".format(e))
 
     def select_db(self,sql):
+        logger.info("执行的sql：{}".format(sql))
+        try:
             # 执行sql
             self.cur.execute(sql)
             results = self.cur.fetchall()
             return results
+        except Exception as e:
+            logger.error("执行sql server的查询sql时发生了错误：{}".format(e))
 
     def execute_db(self,sql):
         # 更新/新增/删除

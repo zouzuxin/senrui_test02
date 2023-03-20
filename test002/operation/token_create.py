@@ -3,6 +3,7 @@
 import os
 
 from common.document_judgment import DocumentJudge
+from common.logger import logger
 from common.read_data import data
 import jsonpath
 import yaml
@@ -16,35 +17,46 @@ data_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_body", "login_t
 
 
 class ProduceToken():
-        # admin的token生成
+    # admin的token生成
     def admin_token(self):
-        # 需要存储的ap响应数据的地址
-        token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage", "admin_token_storage.yml")
-        DocumentJudge().all_document_exist(token_file_path)
-        res =user.api_token(json=data.load_yaml(data_file_path)["init_admin_josn"],headers =data.load_yaml(head_file_path))
-        f =open(token_file_path,'w',encoding='utf-8')
-        yaml.dump(res.json(),f)
+        try:
+            # 需要存储的ap响应数据的地址
+            token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage", "admin_token_storage.yml")
+            DocumentJudge().all_document_exist(token_file_path)
+            res = user.api_token(json=data.load_yaml(data_file_path)["init_admin_josn"],
+                                 headers=data.load_yaml(head_file_path))
+            with open(token_file_path, 'w', encoding='utf-8') as f:
+                yaml.dump(res.json(), f)
+        except Exception as e:
+            logger.error("admin的token生成的方法admin_token方法发生错误：{}".format(e))
 
-
-      # 医生的token生成
+    # 医生的token生成
     def doctor_token(self):
-        # 需要存储的ap响应数据的地址
-        token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage", "doctor_token_storage.yml")
-        DocumentJudge().all_document_exist(token_file_path)
-        res = user.api_token(json=data.load_yaml(data_file_path)["init_doctor_josn"],
-                             headers=data.load_yaml(head_file_path))
-        f = open(token_file_path, 'w', encoding='utf-8')
-        yaml.dump(res.json(), f)
+        try:
+            # 需要存储的ap响应数据的地址
+            token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage",
+                                           "doctor_token_storage.yml")
+            DocumentJudge().all_document_exist(token_file_path)
+            res = user.api_token(json=data.load_yaml(data_file_path)["init_doctor_josn"],
+                                 headers=data.load_yaml(head_file_path))
+            with open(token_file_path, 'w', encoding='utf-8') as f:
+                yaml.dump(res.json(), f)
+        except Exception as e:
+            logger.error("医生的token生成的方法doctor_token方法发生错误：{}".format(e))
 
-        # 护士的token生成
+    # 护士的token生成
     def nurse_token(self):
-        # 需要存储的ap响应数据的地址
-        token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage", "nurse_token_storage.yml")
-        DocumentJudge().all_document_exist(token_file_path)
-        res = user.api_token(json=data.load_yaml(data_file_path)["init_nurse_josn"],
-                             headers=data.load_yaml(head_file_path))
-        f = open(token_file_path, 'w', encoding='utf-8')
-        yaml.dump(res.json(), f)
+        try:
+            # 需要存储的ap响应数据的地址
+            token_file_path = os.path.join(BASE_PATH, "data\\all_storage\\api_token_storage", "nurse_token_storage.yml")
+            DocumentJudge().all_document_exist(token_file_path)
+            res = user.api_token(json=data.load_yaml(data_file_path)["init_nurse_josn"],
+                                 headers=data.load_yaml(head_file_path))
+            with open(token_file_path, 'w', encoding='utf-8') as f:
+                yaml.dump(res.json(), f)
+        except Exception as e:
+            logger.error("护士的token生成的方法nurse_token方法发生错误：{}".format(e))
+
 
 login_token_create=ProduceToken()
 if __name__ == '__main__':

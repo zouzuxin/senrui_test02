@@ -26,29 +26,38 @@ class ReadFileData():
         # 它是通过引号中间包含花括号（'{}'）的形式通过点（.）format()形式进行函数调用，一个参数就需要一个{}
         logger.info("加载{}文件。。。".format(file_path))
         # 循环读取yml文件中的数据
-        with open(file_path,encoding='utf-8') as f :
-            data = yaml.safe_load(f)
-        logger.info("读取数据 ==>> {}".format(data))
-        return data
+        try:
+            with open(file_path,encoding='utf-8') as f :
+                data = yaml.safe_load(f)
+            logger.info("读取数据 ==>> {}".format(data))
+            return data
+        except Exception as e :
+            logger.error("读取文件的load_yaml方法发生错误：{}".format(e))
 
     def load_json(self,file_path):
         logger.info("加載{}文件....".format(file_path))
-        # 循环读取yml中的数据
-        with open(file_path,encoding='utf-8')as f:
-            data=json.load(f)
-        logger.info("读到数据==>> {}".format(data))
-        return data
+        try:
+            # 循环读取yml中的数据
+            with open(file_path,encoding='utf-8')as f:
+                data=json.load(f)
+            logger.info("读到数据==>> {}".format(data))
+            return data
+        except Exception as e :
+            logger.error("读取文件的load_json方法发生错误：{}".format(e))
 
     def load_ini(self,file_path):
         logger.info("加載{}文件....".format(file_path))
-        # 实例化ConfigParser对象，来处理ini文件
-        config = MyConfifParser()
-        # 调用 read() 函数逐个字节（或者逐个字符）读取文件中的内容
-        # read方法接受ini文件路径，也可以指定编码格式
-        config.read(file_path,encoding='utf-8')
-        # 将config里取出来的参数转换成功dict字典格式
-        data =dict(config._sections)
-        return data
+        try:
+            # 实例化ConfigParser对象，来处理ini文件
+            config = MyConfifParser()
+            # 调用 read() 函数逐个字节（或者逐个字符）读取文件中的内容
+            # read方法接受ini文件路径，也可以指定编码格式
+            config.read(file_path,encoding='utf-8')
+            # 将config里取出来的参数转换成功dict字典格式
+            data =dict(config._sections)
+            return data
+        except Exception as e :
+            logger.error("读取文件的load_ini方法发生错误：{}".format(e))
 
 data = ReadFileData()
 

@@ -17,47 +17,59 @@ class AllHeadsRequest():
     # 登入请求头
     def login_heads_toll(self):
         data_file_path =os.path.join(BASE_PATH,"data\\all_storage\\reques_head","head_login.yml")
-        # 判断文件是否存在
-        DocumentJudge().document_exist(data_file_path)
-        login_heads =data.load_yaml(data_file_path)
-        return login_heads
+        try:
+            # 判断文件是否存在
+            DocumentJudge().document_exist(data_file_path)
+            login_heads =data.load_yaml(data_file_path)
+            return login_heads
+        except Exception as e:
+            logger.error("login登入请求头读取时发生错误：{}".formate(e))
 
     # 请求头插入到yml，登入的请求透插入
     def login_heads_toll_insert(self,header):
         data_file_path =os.path.join(BASE_PATH,"data\\all_storage\\reques_head","head_login.yml")
-        # 判断文件是否存在
-        DocumentJudge().document_exist(data_file_path)
-        # 插入方式是先清空原文件的数据，再进行插入
-        f =open(data_file_path,'w',encoding='utf-8')
-        yaml.dump(header,f)
+        try:
+            # 判断文件是否存在
+            DocumentJudge().document_exist(data_file_path)
+            # 插入方式是先清空原文件的数据，再进行插入
+            f =open(data_file_path,'w',encoding='utf-8')
+            yaml.dump(header,f)
+        except Exception as e:
+            logger.error("login登入请求头插入到yml文件时发生错误：{}".format(e))
 
     # api登入的请求头
     def api_heads_toll(self):
         data_file_path = os.path.join(BASE_PATH,"data\\all_storage\\reques_head","api_token_head.yml")
-        api_heads=data.load_yaml(data_file_path)
-        return api_heads
+        try:
+            api_heads=data.load_yaml(data_file_path)
+            return api_heads
+        except Exception as e:
+            logger.error("api登入请求头读取时发生错误：{}".format(e))
 
     # 从head_login.yml文件获取登入的请求头，加入Authorization的标记后，将常用的api请求头插入文件
     def api_heads_toll_insert(self):
-        # 普通api请求头文件
-        api_file_path =os.path.join(BASE_PATH,"data\\all_storage\\reques_head","api_token_head.yml")
-        DocumentJudge().document_exist(api_file_path)
-        # 登入api请求头文件
-        login_file_path = os.path.join(BASE_PATH,"data\\all_storage\\reques_head","head_login.yml")
-        DocumentJudge().all_document_exist(login_file_path)
-        # 登入api请求后，响应数据存储文件
-        login_repost_file_path = os.path.join(BASE_PATH,"data\\all_storage\\api_token_storage","admin_token_storage.yml")
-        DocumentJudge().all_document_exist(login_repost_file_path)
+        try:
+            # 普通api请求头文件
+            api_file_path =os.path.join(BASE_PATH,"data\\all_storage\\reques_head","api_token_head.yml")
+            DocumentJudge().document_exist(api_file_path)
+            # 登入api请求头文件
+            login_file_path = os.path.join(BASE_PATH,"data\\all_storage\\reques_head","head_login.yml")
+            DocumentJudge().all_document_exist(login_file_path)
+            # 登入api请求后，响应数据存储文件
+            login_repost_file_path = os.path.join(BASE_PATH,"data\\all_storage\\api_token_storage","admin_token_storage.yml")
+            DocumentJudge().all_document_exist(login_repost_file_path)
 
-        access_token =data.load_yaml(login_repost_file_path)["access_token"]
-        token_type = data.load_yaml(login_repost_file_path)["token_type"]
-        # 拼接成一个完整的Authorization
-        Authorization =token_type +' '+access_token
-        read_data =data.load_yaml(login_file_path)
-        # 将Authorization的数据插入read_data字典中
-        read_data["Authorization"] =Authorization
-        f = open(api_file_path,'w',encoding='utf-8')
-        yaml.dump(read_data,f)
+            access_token =data.load_yaml(login_repost_file_path)["access_token"]
+            token_type = data.load_yaml(login_repost_file_path)["token_type"]
+            # 拼接成一个完整的Authorization
+            Authorization =token_type +' '+access_token
+            read_data =data.load_yaml(login_file_path)
+            # 将Authorization的数据插入read_data字典中
+            read_data["Authorization"] =Authorization
+            f = open(api_file_path,'w',encoding='utf-8')
+            yaml.dump(read_data,f)
+        except Exception as e:
+            logger.error("api请求头生成时发生错误：{}".format(e))
 
 AllHeadsRequest =AllHeadsRequest()
 
